@@ -41,7 +41,7 @@ namespace WeirdosKlamber.PolyGonk
             score = SingletonSimple.Instance.SumScores();
 
             //doesn't receive language in time
-            if (WeirdosKlamber.PolyGonk.ErojiScript.GetText("Test") == "-Test") langReceived = false;
+            if (WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
             else
             {
                 langReceived = true;
@@ -74,7 +74,7 @@ namespace WeirdosKlamber.PolyGonk
                     if (wait < 0f)
                     {
                         wait = 2f;
-                        if (WeirdosKlamber.PolyGonk.ErojiScript.GetText("Test") == "-Test") langReceived = false;
+                        if (WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
                         else
                         {
                             langReceived = true;

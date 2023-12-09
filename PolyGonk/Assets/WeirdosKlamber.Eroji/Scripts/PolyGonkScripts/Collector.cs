@@ -72,7 +72,7 @@ namespace WeirdosKlamber.PolyGonk
             audioSource = GetComponent<AudioSource>();
             splashFX = audioSource.clip;
             var textX = labelX.GetComponent<TMP_Text>();
-            textX.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText(nameX.ToUpper());
+            textX.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText(nameX.ToUpper());
             textX.fontSize = 24;
             textX.alignment = TextAlignmentOptions.Center;
            

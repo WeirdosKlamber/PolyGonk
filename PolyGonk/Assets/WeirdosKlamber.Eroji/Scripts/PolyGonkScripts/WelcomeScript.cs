@@ -33,17 +33,17 @@ namespace WeirdosKlamber.PolyGonk.Intro
             if (level == 1)
             {
 
-                Info1Lines[0].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome1a");
-                Info1Lines[1].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome1b");
-                Info1Lines[2].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome1c");
+                Info1Lines[0].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome1a");
+                Info1Lines[1].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome1b");
+                Info1Lines[2].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome1c");
 
-                Info2Lines[0].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome2a");
-                Info2Lines[1].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome2b");
-                Info2Lines[2].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome2c");
+                Info2Lines[0].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome2a");
+                Info2Lines[1].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome2b");
+                Info2Lines[2].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome2c");
 
-                Info3Lines[0].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome3a");
-                Info3Lines[1].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome3b");
-                Info3Lines[2].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText("Level1Welcome3c");
+                Info3Lines[0].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome3a");
+                Info3Lines[1].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome3b");
+                Info3Lines[2].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText("Level1Welcome3c");
 
                 SingletonSimple.Instance.TTSAddText("Level1Welcome1a", 3f);
                 SingletonSimple.Instance.TTSAddText("Level1Welcome1b", 4f);
@@ -52,11 +52,11 @@ namespace WeirdosKlamber.PolyGonk.Intro
 
             else //just cast list
             {
-                Info1Lines[0].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText(Info1Lines[0].GetComponent<TextMeshProUGUI>().text);
-                Info1Lines[1].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText(Info1Lines[1].GetComponent<TextMeshProUGUI>().text);
-                Info1Lines[2].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText(Info1Lines[2].GetComponent<TextMeshProUGUI>().text);
-                Info1Lines[3].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText(Info1Lines[3].GetComponent<TextMeshProUGUI>().text);
-                Info1Lines[4].GetComponent<TextMeshProUGUI>().text = ErojiScript.GetText(Info1Lines[4].GetComponent<TextMeshProUGUI>().text);
+                Info1Lines[0].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText(Info1Lines[0].GetComponent<TextMeshProUGUI>().text);
+                Info1Lines[1].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText(Info1Lines[1].GetComponent<TextMeshProUGUI>().text);
+                Info1Lines[2].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText(Info1Lines[2].GetComponent<TextMeshProUGUI>().text);
+                Info1Lines[3].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText(Info1Lines[3].GetComponent<TextMeshProUGUI>().text);
+                Info1Lines[4].GetComponent<TextMeshProUGUI>().text = PolyGonkScript.GetText(Info1Lines[4].GetComponent<TextMeshProUGUI>().text);
 
                 SingletonSimple.Instance.TTSAddText(Info1Lines[0].GetComponent<TextMeshProUGUI>().text, 2.5f);
                 SingletonSimple.Instance.TTSAddText(Info1Lines[1].GetComponent<TextMeshProUGUI>().text, 2.5f);

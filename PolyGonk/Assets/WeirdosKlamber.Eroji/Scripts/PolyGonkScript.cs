@@ -12,28 +12,18 @@ namespace WeirdosKlamber.PolyGonk
 {
     [System.Serializable]
 
-    public class ErojiScript : MonoBehaviour
+    public class PolyGonkScript : MonoBehaviour
     {
-        #region Mock Game Fields
-#pragma warning disable 0649
-        [SerializeField] Button panPrefab, foodPrefab, purchasePanButton, pantryButton, continueButton, newGameButton;
-        [SerializeField] TextMeshProUGUI purchasePanText, coinText, feedbackText, newGameText, continueText, pantryText;
-        [SerializeField] Transform panHolder;
-        [SerializeField] Sprite steak, onion, broccoli;
-        // Full game state data for my "cooking" game.
-        // Default values set in editor.
-     
-#pragma warning restore 0649
 
-        Dictionary<string, Button> _food = new Dictionary<string, Button>();
-        Button _selectedFood;
+        [SerializeField] Button continueButton, newGameButton;
+        [SerializeField] TextMeshProUGUI feedbackText, newGameText, continueText;
+
         bool _init;
         WaitForSeconds _feedbackTimer = new WaitForSeconds(2);
         Coroutine _feedbackMethod;
         static JSONNode _langNode;
         string _langCode = "en";
 
-        #endregion Mock Game Fields
 
         void Start()
         {
@@ -47,8 +37,8 @@ namespace WeirdosKlamber.PolyGonk
                 ILOLSDK sdk = new LoLSDK.MockWebGL();
 #elif UNITY_WEBGL
             ILOLSDK sdk = new LoLSDK.WebGL();
-#elif UNITY_IOS || UNITY_ANDROID
-            ILOLSDK sdk = null; // TODO COMING SOON IN V6
+#else 
+            ILOLSDK sdk = null;
 #endif
 
                 LOLSDK.Init(sdk, "com.legends-of-learning.unity.sdk.v5.3.Weirdos_Klamber");
@@ -69,7 +59,6 @@ namespace WeirdosKlamber.PolyGonk
                 UnityEditor.EditorGUIUtility.PingObject(this);
                 LoadMockData();
 #endif
-
             }
         }
         private void OnDestroy()
@@ -79,11 +68,6 @@ namespace WeirdosKlamber.PolyGonk
                 return;
 #endif
             LOLSDK.Instance.SaveResultReceived -= OnSaveResult;
-        }
-
-        void Save()
-        {
-           // LOLSDK.Instance.SaveState(cookingData);
         }
 
         void OnSaveResult(bool success)
@@ -119,16 +103,13 @@ namespace WeirdosKlamber.PolyGonk
             }
             _langNode = JSON.Parse(langJSON);
             print("language update");
-           // print (_langNode);
-           // print("Test: " + _langNode["Test"]);
             TextDisplayUpdate();
         }
 
 
         public static bool IsThereText(string key)
         {
-            if (_langNode?[key]) { return true; }
-            else { return false; }
+            return _langNode?[key]; 
         }
 
         public static string GetText(string key)
@@ -142,11 +123,12 @@ namespace WeirdosKlamber.PolyGonk
                 return valueX;
             }
 
-            //added in a backup dictionary for testing            
+            //added in a backup dictionary for testing/Itch           
             else if (EnglishLang.englishDictionary.ContainsKey(key))
             {
                 print("unsuccessful but using dict");
-                return EnglishLang.englishDictionary[key]; }
+                return EnglishLang.englishDictionary[key]; 
+            }
 
             else
             {
@@ -154,30 +136,6 @@ namespace WeirdosKlamber.PolyGonk
                 return "-" + key;
             }
         }
-
-        // This could be done in a component with a listener attached to an lang change
-        // instead of coupling all the text to a controller class.
-
-
-        void TextDisplayUpdate()
-        {
-            print("erojitext textdisplayupdate");
-            newGameText.text = GetText("newGame");
-            continueText.text = GetText("continue");
-
-        }
-
-        /// <summary>
-        /// This is the setting of your initial state when the scene loads.
-        /// The state can be set from your default editor settings or from the
-        /// users saved data after a valid save is called.
-        /// </summary>
-        /// <param name="loadedCookingData"></param>
-       
-
-        #region Mock Game Methods
-
-
         IEnumerator _Feedback(string text)
         {
             feedbackText.text = text;
@@ -185,7 +143,20 @@ namespace WeirdosKlamber.PolyGonk
             feedbackText.text = string.Empty;
             _feedbackMethod = null;
         }
-        #endregion Mock Game Methods
+        // This could be done in a component with a listener attached to an lang change
+        // instead of coupling all the text to a controller class.
+        void TextDisplayUpdate()
+        {
+            newGameText.text = GetText("newGame");
+            continueText.text = GetText("continue");
+        }
+
+        /// <summary>
+        /// This is the setting of your initial state when the scene loads.
+        /// The state can be set from your default editor settings or from the
+        /// users saved data after a valid save is called.
+        /// </summary>
+        /// <param name="loadedPolyGonkData"></param>      
 
 #if UNITY_EDITOR
         // Loading Mock Gameframe data

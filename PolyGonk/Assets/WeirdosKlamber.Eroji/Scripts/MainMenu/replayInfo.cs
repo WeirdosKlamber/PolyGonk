@@ -27,12 +27,12 @@ namespace WeirdosKlamber.PolyGonk
 
             if (SingletonSimple.Instance.levelScores[0] > SingletonSimple.Instance.levels1starThresholds[0])
             { 
-                messageObj.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("replayInfo");
+                messageObj.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("replayInfo");
                 SingletonSimple.Instance.TTSAddText("replayInfo",12f);
             }
             else 
             {
-                messageObj.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("replayInfo2");
+                messageObj.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("replayInfo2");
                 SingletonSimple.Instance.TTSAddText("replayInfo2", 12f);
             }
         }

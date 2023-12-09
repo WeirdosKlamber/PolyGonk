@@ -59,11 +59,11 @@ namespace WeirdosKlamber.PolyGonk.Lesson
             print(lessonName + "Welcome");
 /*            if (WeirdosKlamber.PolyGonk.ErojiScript.IsThereText(lessonName + "Welcome"))
             {*/
-                welcomeText.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText(lessonName + "Welcome");
+                welcomeText.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText(lessonName + "Welcome");
 
-                text1.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText(lessonName + "text1");
-                text2.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText(lessonName + "text2");
-                text3.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.ErojiScript.GetText(lessonName + "text3");
+                text1.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText(lessonName + "text1");
+                text2.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText(lessonName + "text2");
+                text3.GetComponent<TextMeshProUGUI>().text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText(lessonName + "text3");
 
                 SingletonSimple.Instance.TTSAddText(lessonName + "Welcome", welcomeTextDuration);
                 SingletonSimple.Instance.TTSAddText(lessonName + "text1", text1Duration);

@@ -185,10 +185,10 @@ namespace WeirdosKlamber.PolyGonk
             }
 
         }
-        public void OnLoad(CookingData loadedCookingData)
+        public void OnLoad(CookingData loadedPolyGonkData)
         {
 
-                SingletonSimple.Instance.LoadGame(loadedCookingData);
+                SingletonSimple.Instance.LoadGame(loadedPolyGonkData);
                 Loaded = true;
                 FailedtoConnect.SetActive(false);
         }

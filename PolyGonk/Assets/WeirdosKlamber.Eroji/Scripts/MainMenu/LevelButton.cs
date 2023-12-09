@@ -31,7 +31,7 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
         // Start is called before the first frame update
         void Start()
         {
-            levelLabel.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Level") +" "+levelNumber.ToString();
+            levelLabel.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Level") +" "+levelNumber.ToString();
             starsUpdate();
             if (GetComponent<Button>().interactable)
             {

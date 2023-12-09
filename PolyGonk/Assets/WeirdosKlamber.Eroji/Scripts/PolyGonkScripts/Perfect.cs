@@ -19,7 +19,7 @@ namespace WeirdosKlamber.PolyGonk
         {
             textM = gameObject.GetComponent<TextMeshProUGUI>();
             textM.fontMaterial.SetColor(ShaderUtilities.ID_GlowColor, new Color(1f, 1f, 0f));
-            textM.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Perfect");
+            textM.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Perfect");
            // textM.fontSize = 5f;
 
         }

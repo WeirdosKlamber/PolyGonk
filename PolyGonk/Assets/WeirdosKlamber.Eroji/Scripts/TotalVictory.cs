@@ -32,25 +32,25 @@ namespace WeirdosKlamber.PolyGonk
             SingletonSimple.Instance.ClearText();
             if (SingletonSimple.Instance.SumScores() > 214)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Congratulations4") + SingletonSimple.Instance.SumScores().ToString();
+                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations4") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations4", 7f);
             }
             else if (SingletonSimple.Instance.SumScores() > 183)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Congratulations3") + SingletonSimple.Instance.SumScores().ToString();
+                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations3") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations3", 7f);
             }
             else if (SingletonSimple.Instance.SumScores() > 160)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Congratulations2") + SingletonSimple.Instance.SumScores().ToString();
+                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations2") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations2", 7f);
             }
             else
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("Congratulations1") + SingletonSimple.Instance.SumScores().ToString();
+                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations1") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations1", 7f);
             }
-            EndTxt.text = WeirdosKlamber.PolyGonk.ErojiScript.GetText("End");
+            EndTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("End");
             applauseFX.Play();
         }
 
