@@ -1,13 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.IO;
+
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-using TMPro;
 using LoLSDK;
-using SimpleJSON;
-using WeirdosKlamber;
+
 namespace WeirdosKlamber.PolyGonk
 {
     [System.Serializable]
@@ -37,7 +32,7 @@ namespace WeirdosKlamber.PolyGonk
     {
         public Button newGameButton;
         public Button continueButton;
-        public PolyGonk.squarehello helloSquare;
+        public PolyGonk.SquareHello helloSquare;
         private bool loaded = false;
         public AudioSource clickFX;
         public GameObject fadeOut;
@@ -71,7 +66,7 @@ namespace WeirdosKlamber.PolyGonk
 
         private void Start()
         {
-            if (SingletonSimple.Instance.totalScore > 0 || SingletonSimple.Instance.CheckCount>0)
+            if (SingletonSimple.Instance.totalScore > 0 || SingletonSimple.Instance.checkCount>0)
             {
                 mainMenu.SendMessage("StarttheShow");
                 helloSquare.GoDown();

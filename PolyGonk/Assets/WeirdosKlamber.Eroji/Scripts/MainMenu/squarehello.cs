@@ -1,10 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace WeirdosKlamber.PolyGonk
 {
-    public class squarehello : MonoBehaviour
+    public class SquareHello : MonoBehaviour
     {
         public GameObject rightArm;
         private float delay = 4f;
@@ -18,7 +16,6 @@ namespace WeirdosKlamber.PolyGonk
         // Start is called before the first frame update
         void Start()
         {
-
         }
 
         // Update is called once per frame
@@ -57,9 +54,9 @@ namespace WeirdosKlamber.PolyGonk
             if (waving) 
             {
                 waveTimer += Time.unscaledDeltaTime;
+
                 if (waveClockWise)
                 {
-
                     rightArm.transform.Rotate(new Vector3(0f, 0f, -240f) * Time.deltaTime);
 
                     if (waveTimer>0.5f)
@@ -67,7 +64,6 @@ namespace WeirdosKlamber.PolyGonk
                         waveTimer = 0f;
                         waveClockWise= false;
                     }
-
                 }
                 else if (allowHello)
                 {
@@ -81,6 +77,7 @@ namespace WeirdosKlamber.PolyGonk
                 }
             }
         }
+
         public void GoDown()
         {
             allowHello = false;
@@ -90,9 +87,7 @@ namespace WeirdosKlamber.PolyGonk
             {
                 waveTimer = 0.5f - waveTimer;
             }
-
-            waveClockWise = true;
-            
+            waveClockWise = true;            
         }
     }
 }

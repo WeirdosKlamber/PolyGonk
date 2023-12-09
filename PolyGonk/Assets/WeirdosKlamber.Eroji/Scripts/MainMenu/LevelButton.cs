@@ -1,8 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using WeirdosKlamber.PolyGonk;
 using UnityEngine.UI;
 
 namespace WeirdosKlamber.PolyGonk.MainMenu
@@ -28,10 +25,9 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
         private bool star2won = false;
         private bool star3won = false;
 
-        // Start is called before the first frame update
         void Start()
         {
-            levelLabel.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Level") +" "+levelNumber.ToString();
+            levelLabel.text = PolyGonkScript.GetText("Level") +" "+levelNumber.ToString();
             starsUpdate();
             if (GetComponent<Button>().interactable)
             {
@@ -41,13 +37,6 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
             {
                 ButtonDisable();
             }
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
         }
 
         void starsUpdate()
@@ -102,7 +91,6 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
 
         public void ButtonPress()
         {
-            print("buttonpress");
             clickFx.Play();
             starsContainer.transform.localPosition = new Vector2(0f, 0f);
             labelContainer.transform.localPosition = new Vector2(0f, 0f);
@@ -138,7 +126,6 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
             starsContainer.transform.localPosition = new Vector2(0f, 0f);
             labelContainer.transform.localPosition = new Vector2(0f, 0f);
             levelLabel.color = Color.grey;
-            //starsUpdate();
         }
 
         public void ButtonEnable()
@@ -147,7 +134,6 @@ namespace WeirdosKlamber.PolyGonk.MainMenu
             starsContainer.transform.localPosition = new Vector2(-2f, 1f);
             labelContainer.transform.localPosition = new Vector2(-1f, 1f);
             levelLabel.color = Color.white;
-            //starsUpdate();
         }
 
         public void StarsWon(int starsNumber)

@@ -1,78 +1,74 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using LoLSDK;
-using SimpleJSON;
 
 namespace WeirdosKlamber.PolyGonk
     { 
     public class TotalVictory : MonoBehaviour
     {
-        public TextMeshProUGUI CongratulationsTxt;
-        public TextMeshProUGUI EndTxt;
+        public TextMeshProUGUI congratulationsTxt;
+        public TextMeshProUGUI endTxt;
         public AudioSource clickFX;
         public AudioSource applauseFX;
-        public AudioSource KazooFX;
+        public AudioSource kazooFX;
 
-        public GameObject FadeOut;
-        public GameObject LabelBGD;
-        public GameObject EndButton;
+        public GameObject fadeOut;
+        public GameObject labelBackground;
+        public GameObject endButton;
 
-        public GameObject Buttons;
-        public GameObject Button5;
-        public GameObject Button6;
+        public GameObject buttons;
+        public GameObject button5;
+        public GameObject button6;
         
         private float appearTimer = 0f;
-        private float Fader = 0f;
-            // Start is called before the first frame update
+        private float fader = 0f;
+
         void Start()
         {
             SingletonSimple.Instance.ClearText();
             if (SingletonSimple.Instance.SumScores() > 214)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations4") + SingletonSimple.Instance.SumScores().ToString();
+                congratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations4") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations4", 7f);
             }
             else if (SingletonSimple.Instance.SumScores() > 183)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations3") + SingletonSimple.Instance.SumScores().ToString();
+                congratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations3") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations3", 7f);
             }
             else if (SingletonSimple.Instance.SumScores() > 160)
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations2") + SingletonSimple.Instance.SumScores().ToString();
+                congratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations2") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations2", 7f);
             }
             else
             {
-                CongratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations1") + SingletonSimple.Instance.SumScores().ToString();
+                congratulationsTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Congratulations1") + SingletonSimple.Instance.SumScores().ToString();
                 SingletonSimple.Instance.TTSAddText("Congratulations1", 7f);
             }
-            EndTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("End");
+            endTxt.text = WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("End");
             applauseFX.Play();
         }
 
-        // Update is called once per frame
         void Update()
         {
             appearTimer += Time.deltaTime;
-            if (appearTimer > 4.5f && LabelBGD.activeSelf == false)
+            if (appearTimer > 4.5f && labelBackground.activeSelf == false)
             {
-                Button5.SetActive(false);
-                Button6.SetActive(false); 
-                LabelBGD.SetActive(true);
-                KazooFX.Play();
+                button5.SetActive(false);
+                button6.SetActive(false); 
+                labelBackground.SetActive(true);
+                kazooFX.Play();
             }
-                if (appearTimer > 5.5f && EndButton.activeSelf == false) EndButton.SetActive(true);
+                if (appearTimer > 5.5f && endButton.activeSelf == false) endButton.SetActive(true);
 
-            if (Fader > 0f)
+            if (fader > 0f)
             {
-                Fader -= Time.deltaTime;
-                if (Fader <= 0f) LOLSDK.Instance.CompleteGame();// Application.Quit(); //this doesn''t work for web, maybe LoL have a command
+                fader -= Time.deltaTime;
+                if (fader <= 0f) LOLSDK.Instance.CompleteGame();
                 else
-                    FadeOut.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f - 2f * Fader);
+                    fadeOut.GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f - 2f * fader);
             }
         }
 
@@ -81,13 +77,15 @@ namespace WeirdosKlamber.PolyGonk
             clickFX.Play();
             gameObject.SetActive(false);
         }
+
         public void End()
         {
             clickFX.Play();
-            Fader = 0.5f;
-            Buttons.SetActive(false);
-            FadeOut.SetActive(true);
+            fader = 0.5f;
+            buttons.SetActive(false);
+            fadeOut.SetActive(true);
         }
+
         public void TTSButtonPressed()
         {
             SingletonSimple.Instance.Speak();

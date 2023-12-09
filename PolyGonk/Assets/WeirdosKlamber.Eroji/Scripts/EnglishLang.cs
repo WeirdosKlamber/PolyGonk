@@ -1,8 +1,5 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Experimental.AI;
-
 
 namespace WeirdosKlamber.PolyGonk
 {
@@ -206,6 +203,5 @@ namespace WeirdosKlamber.PolyGonk
 
             {"Perfect", "PERFECT!"}
         };
-
     }
 }

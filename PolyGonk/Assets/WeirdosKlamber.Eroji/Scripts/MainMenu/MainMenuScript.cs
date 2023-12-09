@@ -1,20 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-using TMPro;
-using LoLSDK;
-using SimpleJSON;
-using WeirdosKlamber;
+
 namespace WeirdosKlamber.PolyGonk
 {
     public class MainMenuScript : MonoBehaviour
     {
-
         public GameObject mainTitle;
-
-        private int score = 0;
 
         private bool langReceived = false;
         private float wait = 2f;
@@ -24,24 +17,16 @@ namespace WeirdosKlamber.PolyGonk
         private string LevelSelection;
         private bool LevelSelected = false;
         private float FadeTimer = 1f;
-        private float TitleTimer = 0.5f;
-        private int TitleCounter = 0;
         public GameObject[] Titles;
         public GameObject TotalVictory;
         private bool StartShow = false;
-        private bool PlayedMusic = false;
         private bool ShowTVOnce = false;
-
-
-
 
         // Start is called before the first frame update
         void Start()
         {
-            score = SingletonSimple.Instance.SumScores();
-
-            //doesn't receive language in time
-            if (WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
+            //doesn't always receive language in time
+            if (PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
             else
             {
                 langReceived = true;
@@ -54,12 +39,6 @@ namespace WeirdosKlamber.PolyGonk
         {
             if (StartShow)
             {
-                if (!ShowTVOnce && !PlayedMusic)
-                {
-                    score = SingletonSimple.Instance.SumScores();
-
-                }
-
                 //make happen after spring in and spin out, prevent music
                 if (!ShowTVOnce && SingletonSimple.Instance.levelScores[6]>1)
                 {
@@ -74,7 +53,7 @@ namespace WeirdosKlamber.PolyGonk
                     if (wait < 0f)
                     {
                         wait = 2f;
-                        if (WeirdosKlamber.PolyGonk.PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
+                        if (PolyGonkScript.GetText("Test") == "-Test") langReceived = false;
                         else
                         {
                             langReceived = true;
@@ -82,7 +61,7 @@ namespace WeirdosKlamber.PolyGonk
                         }
                     }
                 }
-                if (LevelSelected)// && FinishedLecture)
+                if (LevelSelected)
                 {
                     FadeTimer -= Time.deltaTime;
                     if (FadeTimer < 0f)
@@ -96,7 +75,6 @@ namespace WeirdosKlamber.PolyGonk
                 }
             }
         }
-
 
         void StarttheShow()
         {

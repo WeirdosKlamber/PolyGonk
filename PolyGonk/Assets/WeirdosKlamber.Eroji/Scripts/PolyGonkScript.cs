@@ -1,12 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using System.IO;
 using LoLSDK;
 using SimpleJSON;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 namespace WeirdosKlamber.PolyGonk
 {
@@ -126,13 +124,12 @@ namespace WeirdosKlamber.PolyGonk
             //added in a backup dictionary for testing/Itch           
             else if (EnglishLang.englishDictionary.ContainsKey(key))
             {
-                print("unsuccessful but using dict");
                 return EnglishLang.englishDictionary[key]; 
             }
 
             else
             {
-                print("very unsuccessful");
+                print("abort");
                 return "-" + key;
             }
         }

@@ -1,15 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using TMPro;
-using LoLSDK;
-using SimpleJSON;
-using WeirdosKlamber;
+
 namespace WeirdosKlamber.PolyGonk
 {
-    public class replayInfo : MonoBehaviour
+    public class ReplayInfo : MonoBehaviour
     {
         public GameObject labelBGD;
         public GameObject messageObj;
@@ -20,7 +15,7 @@ namespace WeirdosKlamber.PolyGonk
         private float startTimer = 0f;
         private bool killSoon = false;
         private float killTimer = 0.2f;
-        // Start is called before the first frame update
+
         void Start()
         {
             SingletonSimple.Instance.ClearText();

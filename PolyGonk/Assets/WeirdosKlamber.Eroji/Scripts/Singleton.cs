@@ -9,11 +9,9 @@ namespace WeirdosKlamber.PolyGonk
     [System.Serializable]
     public sealed class SingletonSimple : MonoBehaviour
     {
-
         private static SingletonSimple _Instance;
         public static SingletonSimple Instance
         {
-
             get
             {
                 if (!_Instance)
@@ -21,8 +19,8 @@ namespace WeirdosKlamber.PolyGonk
                     _Instance = new GameObject().AddComponent<SingletonSimple>();
                     // name it for easy recognition
                     _Instance.name = _Instance.GetType().ToString();
-                    // mark root as DontDestroyOnLoad();
 
+                    // mark root as DontDestroyOnLoad();
                     DontDestroyOnLoad(_Instance.gameObject);
                 }
                 return _Instance;
@@ -48,15 +46,15 @@ namespace WeirdosKlamber.PolyGonk
         public bool level6Completed = false;
         public bool lesson7Completed = false;
         public bool level7Completed = false;
-        public int CheckCount = 0;
+        public int checkCount = 0;
         private bool speaking = false;
         private float speakwaiter = 1f;
 
         private string[] TTSKeysArray = new string[10];
         private float[] TTSKeysWaitArray = new float[16];
-        private int KeysIterator = 0;
+        private int keysIterator = 0;
 
-        public bool[] Checkpoints = new bool[14];
+        public bool[] checkpoints = new bool[14];
 
         public int[] levels3starThresholds= new int[7] { 15, 21, 26, 32, 36, 30, 50 };
         public int[] levels2starThresholds = new int[7] { 13, 18, 21, 28, 33, 25, 40 };
@@ -68,8 +66,8 @@ namespace WeirdosKlamber.PolyGonk
         public bool isLOL = false;
         private void Awake()
         {
-            print("hellosingleton");
-            cantbebotheredwithpointers();
+            print("hello singleton");
+            populateCheckpointsArray();
         }
 
         private void Update()
@@ -79,55 +77,55 @@ namespace WeirdosKlamber.PolyGonk
                 speakwaiter -= Time.unscaledDeltaTime;
                 if (speakwaiter < 0f)
                 {
-                    print("KeysIterator:" + KeysIterator.ToString() + " ttskeysarraylength: " + TTSKeysArray.Length.ToString());
-                    if (KeysIterator < TTSKeysArray.Length && TTSKeysArray[KeysIterator] != null && TTSKeysArray[KeysIterator] != "")
+                    print("KeysIterator:" + keysIterator.ToString() + " ttskeysarraylength: " + TTSKeysArray.Length.ToString());
+                    if (keysIterator < TTSKeysArray.Length && TTSKeysArray[keysIterator] != null && TTSKeysArray[keysIterator] != "")
                     {
-                        LOLSDK.Instance.SpeakText(TTSKeysArray[KeysIterator]);
-                        speakwaiter = TTSKeysWaitArray[KeysIterator];
-                        KeysIterator++;
+                        LOLSDK.Instance.SpeakText(TTSKeysArray[keysIterator]);
+                        speakwaiter = TTSKeysWaitArray[keysIterator];
+                        keysIterator++;
                     }
                     else
                     {
-                        KeysIterator++;
+                        keysIterator++;
                     }
 
-                    if (KeysIterator>10)
+                    if (keysIterator>10)
                     {
                         speaking = false;
-                        KeysIterator = 0;
+                        keysIterator = 0;
                         speakwaiter = 0f;
                     }               
                 }
             }            
         }
 
-
-        private void cantbebotheredwithpointers()
+        private void populateCheckpointsArray()
         {
-            Checkpoints[0] = lesson1Completed;
-            Checkpoints[1] = level1Completed;
-            Checkpoints[2] = lesson2Completed;
-            Checkpoints[3] = level2Completed;
-            Checkpoints[4] = lesson3Completed;
-            Checkpoints[5] = level3Completed;
-            Checkpoints[6] = lesson4Completed;
-            Checkpoints[7] = level4Completed;
-            Checkpoints[8] = lesson5Completed;
-            Checkpoints[9] = level5Completed;
-            Checkpoints[10] = lesson6Completed;
-            Checkpoints[11] = level6Completed;
-            Checkpoints[12] = lesson7Completed;
-            Checkpoints[13] = level7Completed;            
+            checkpoints[0] = lesson1Completed;
+            checkpoints[1] = level1Completed;
+            checkpoints[2] = lesson2Completed;
+            checkpoints[3] = level2Completed;
+            checkpoints[4] = lesson3Completed;
+            checkpoints[5] = level3Completed;
+            checkpoints[6] = lesson4Completed;
+            checkpoints[7] = level4Completed;
+            checkpoints[8] = lesson5Completed;
+            checkpoints[9] = level5Completed;
+            checkpoints[10] = lesson6Completed;
+            checkpoints[11] = level6Completed;
+            checkpoints[12] = lesson7Completed;
+            checkpoints[13] = level7Completed;            
         }
+
         public void SaveGame()
         {
-            cantbebotheredwithpointers();
+            populateCheckpointsArray();
             totalScore= 0;
             SumScores();
             countCheckpoints();
             if (isLOL)
             {
-                LOLSDK.Instance.SubmitProgress(totalScore, CheckCount, 14);
+                LOLSDK.Instance.SubmitProgress(totalScore, checkCount, 14);
             }
 
             SaveData SaveMe = new SaveData
@@ -201,7 +199,7 @@ namespace WeirdosKlamber.PolyGonk
             level6Completed = false;
             lesson7Completed = false;
             level7Completed = false;
-            CheckCount = 0;
+            checkCount = 0;
 
             levelsPerfectArray = new bool[7];
             levelScores = new int[7];
@@ -211,14 +209,12 @@ namespace WeirdosKlamber.PolyGonk
         public void ClearText()
         {
             Array.Clear(TTSKeysArray, 0, 10);
-            KeysIterator = 0;
+            keysIterator = 0;
             speaking = false;
-            //don't need to clear waiting times
         }
 
         public void TTSAddText(string langKey,float langtime)
         {
-            print("ADDtext langkey: " + langKey);
             for (int i = 0; i < TTSKeysArray.Length; i++)
             {
                 if (TTSKeysArray[i] == null|| TTSKeysArray[i] == "")
@@ -239,25 +235,23 @@ namespace WeirdosKlamber.PolyGonk
             }
             return totalScore;
         }
+
         public int countCheckpoints()
         {
-            cantbebotheredwithpointers();
-            CheckCount = 0;
-            for (int i = 0; i < Checkpoints.Length; i++)
+            populateCheckpointsArray();
+            checkCount = 0;
+            for (int i = 0; i < checkpoints.Length; i++)
             {
-                if (Checkpoints[i] == true)
-                    CheckCount++;
+                if (checkpoints[i] == true) checkCount++;
             }
-            return CheckCount;
+            return checkCount;
         }
 
-    public void Speak()
+        public void Speak()
         {
-            print("SPEAK");
-            KeysIterator = 0;
+            keysIterator = 0;
             speakwaiter = 0f;
             speaking = true;
-
         }
 
         public void LessonCompleted(int lessonN)
