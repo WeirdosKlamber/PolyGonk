@@ -130,7 +130,7 @@ namespace WeirdosKlamber.PolyGonk
                 LOLSDK.Instance.SubmitProgress(totalScore, CheckCount, 14);
             }
 
-            CookingData SaveMe = new CookingData
+            SaveData SaveMe = new SaveData
             {
                 Checkpoint1lesson1 = lesson1Completed,
                 Checkpoint2level1 = level1Completed,
@@ -154,11 +154,11 @@ namespace WeirdosKlamber.PolyGonk
             };
             if (isLOL)
             {
-                LOLSDK.Instance.SaveState<CookingData>(SaveMe);
+                LOLSDK.Instance.SaveState<SaveData>(SaveMe);
             }
         }
 
-        public void LoadGame(CookingData LoadData)
+        public void LoadGame(SaveData LoadData)
         {
             lesson1Completed = LoadData.Checkpoint1lesson1;
             level1Completed = LoadData.Checkpoint2level1;
