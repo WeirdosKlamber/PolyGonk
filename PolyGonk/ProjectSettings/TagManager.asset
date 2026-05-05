@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Water
+  - Sand
+  - Rock
+  - Deadwater
+  - SeaWall
+  - WaterTidal
+  - Leftbank
+  - Rightbank
+  - Banana
+  - Apple
+  - Spider
+  - Melon
+  - Crocodile
+  - Monkey
+  - Log
+  - CrocodileBite
+  - Heart
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - SPRTs
+  - Water
+  - UI
+  - SeaWall
+  - ShapesLayer
+  - Water2
+  - BackgroundPool
+  - BackgroundSky
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: BackgroundSky
+    uniqueID: 389043311
+    locked: 0
+  - name: Water3
+    uniqueID: 1268668415
+    locked: 0
+  - name: BackgroundPool
+    uniqueID: 3593487681
+    locked: 0
+  - name: Water2
+    uniqueID: 3673467749
+    locked: 0
+  - name: ShapesBackLayer
+    uniqueID: 1471479349
+    locked: 0
+  - name: ShapesLayer
+    uniqueID: 775771665
+    locked: 0
+  - name: Water1
+    uniqueID: 1386356959
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: SpritesLAyer
+    uniqueID: 2081523785
+    locked: 0
+  - name: WallLayer
+    uniqueID: 1558378761
+    locked: 0
